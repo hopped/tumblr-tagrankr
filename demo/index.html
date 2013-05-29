@@ -1,0 +1,120 @@
+<!-- Last updated on 30th May, 2013 -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>TagRankr - Retrieving a list of used tags for your tumblr blog</title>
+  <script type="text/javascript" src="../lib/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="../lib/jquery-ui.js"></script>
+  <script type="text/javascript" src="../src/tagrankr.js"></script>
+  <!-- the following JavaScript and Stylesheet are for demonstration only -->
+  <script type="text/javascript" src="jquery.flexipage.js"></script>
+  <link rel="stylesheet" type="text/css" href="simple.css">
+</head>
+
+<body>
+  <h2>TagRankr</h2>
+  <h3>Demonstration</h3>
+  <p>
+  	Please enter the <strong>address</strong> (without 'http://') of the
+  	relevant <em>tumblr</em> blog below, and press <strong>submit</strong>:
+  </p>
+  <form id="tagRequest">
+    <label id="blog-label" for="blog">tumblr. blog</label>
+    <input id="blog" type="text" value="box-of-birds.tumblr.com" size="40">
+    <br />
+
+    <label id="key-label" for="api_key">tumblr. API key</label>
+    <input id="api_key" type="text" value="hKrSgR1AeyHhosts41RTXjBTCCAm9dlqS9qQ1FUQwfQ85Aagi2" size="70">
+    <br />
+    
+    <label id="prefix-label" for="label">Category prefix</label>
+    <input id="prefix" type="text" value="#" size="4">
+    <br />
+	
+	<label id="count-label" for="show_count">Show category count</label>
+    <input type="radio" name="count" value="true" checked>true
+    <br />
+    <span>
+      <input type="radio" name="count" value="false">false
+    </span>
+    <br />
+ 
+ 	<label id="order-label" for="order_by">Sorting</label>
+    <input type="radio" name="order" value="frequency" checked>by frequency
+    <br />
+    <span>
+      <input type="radio" name="order" value="alphabetically">alphabetically
+    </span>
+    <br />
+
+    <br />
+    <span>
+   	  <input id="button" type="submit" value="Submit">
+   	</span>
+  </form>
+
+  <br /><hr /><br />
+
+  <h3>Please note:</h3>
+  <p>
+    The tumblr <em>tagRankr</em> does <strong>not
+    perform paging</strong> of the returned list of categories.<br /> This is
+    just a demonstration using the jQuery <strong>flexipage</strong> plugin.
+    More information on the plugin can be found 
+    <a href="http://flexipage.vieron.net/">here</a>.
+  </p>
+
+  <br /><hr /><br />
+
+  <!-- Please insert the following line in your HTML -->
+  <div id="tagRankr"></div>
+
+  <script type="text/javascript">
+    function pagerCallback() {
+      $('#tagRankr ul').flexipage({
+	      perpage: 10,
+	    });
+    };
+
+    $(document).ready(function() {
+      $("#button").click(function() {
+      	$("#tagRankr").remove();
+      	$("<div id='tagRankr'></div>").appendTo('body');
+
+      	/*
+      	 * You'll just need the following call to tagRankr in your own
+      	 * HTML page. Please insert both the blog and api_key parameters to
+      	 * map to your own blog and tumblr API key. Example:
+      	 * 
+      	 * <pre>
+      	 * $("#tagRankr").tagRankr({
+         *   blog: 'box-of-birds.tumblr.com,
+         *   api_key: '<INSERT_YOUR_KEY_HERE>'
+      	 * });
+      	 * </pre>
+      	 */
+      	$("#tagRankr").tagRankr({
+      	  /* required */
+      	  api_key  : $("input#api_key").val(),
+      	  blog     : $("input#blog").val(),
+      	  /* optional */
+      	  callback : pagerCallback,
+      	  defaults :  {
+      	    prefix     : $("input#prefix").val(),
+      	    show_count : $("input:radio[name='count']:checked").val(),
+      	    sorting    : $("input:radio[name='order']:checked").val()
+      	  }
+      	});
+
+      	return false;
+      }); 	
+    });
+  </script>
+</body>
+
+</html>

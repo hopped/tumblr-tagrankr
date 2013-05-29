@@ -1,0 +1,16 @@
+#tagRequest label {
+  float: left;
+  width: 150px;
+  text-align: right;
+  padding-right: 1em;
+}
+
+#tagRequest span {
+  margin-left: 150px;
+  padding-left: 1em;
+}
+
+#tagRankr ul
+{
+  list-style-type: none;
+}
