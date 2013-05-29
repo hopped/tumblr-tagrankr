@@ -65,7 +65,7 @@ In general, jQuery UI is not included in tumblr theme. Hence, ensure that it is 
 
 Now, include **TagRankr** at some place within the head section. Example:
 
-    <script src="http://code.boxofbirds.net/js/libs/tagrankr/tagrankr.min.js"></script>
+    <script src="http://code.dennis-hoppe.com/js/libs/tagrankr/tagrankr.min.js"></script>
  
 Locate the end of your **sidebar** (or any other suitable section) by searching 
 for the term
@@ -302,7 +302,7 @@ flexipage.
 
 Copyright (c) 2013 Dennis Hoppe
 
-This content is released under the MIT Licence.
+This content is released under the [MIT Licence](http://code.dennis-hoppe.com/js/libs/tagrankr/LICENCE).
 
 
 
