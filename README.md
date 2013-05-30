@@ -78,7 +78,7 @@ after pages, and insert the following div element:
     <div id="tagRankr"></div>
 
 You may need to add some **CSS classes** to the block element. In case of the 
-[Effector theme (http://tumblr.com/themes/by/pixelunion), these are:
+[Effector theme](http://tumblr.com/themes/by/pixelunion), these are:
 
     <div id="tagRankr" class="side-box ruled-top"></div>
 
